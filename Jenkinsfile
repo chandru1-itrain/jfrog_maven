@@ -1,11 +1,11 @@
 node {
-    def server = Artifactory.server('satyasai.jfrog.io')
+    def server = Artifactory.server('chandru.jfrog.io')
     def buildInfo = Artifactory.newBuildInfo()
     def rtMaven = Artifactory.newMavenBuild()
     
     
     stage ('Checkout & Build') {
-        git url: 'https://github.com/itrainspartans/jfrog_maven.git'
+        git url: 'https://github.com/chandru1-itrain/jfrog_maven.git'
     }
  
     stage ('Unit Test') {
@@ -40,6 +40,7 @@ node {
         server.publishBuildInfo buildInfo
     }
     
+   /*
     stage('Status Notification'){
         def mailRecipients = "ramesh.thadivada@gmail.com"
         def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER}- ${currentBuild.result}"
@@ -51,5 +52,5 @@ node {
              body: "Build Number: #${env.BUILD_NUMBER}  Status:${currentBuild.result} Build URL: ${env.BUILD_URL}"
           
    }
-   
+   */
 }
